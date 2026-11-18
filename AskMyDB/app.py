@@ -28,148 +28,160 @@ def choose_example(question):
     st.session_state["question"] = question
 
 
-# Cream and cerulean blue theme
+# Peach, cream, navy and rose theme
 st.markdown("""
 <style>
-/* Main background */
-html,
-body,
+/* Main page */
 .stApp,
 [data-testid="stAppViewContainer"],
-[data-testid="stMain"],
-[data-testid="stMainBlockContainer"] {
-    background-color: #FFFBEF !important;
-    color: #243B53 !important;
+[data-testid="stMain"] {
+    background-color: #EEE2DC !important;
+    color: #123C69 !important;
     color-scheme: light;
 }
 
-/* Toolbar */
-[data-testid="stHeader"],
-[data-testid="stToolbar"] {
-    background-color: #FFFBEF !important;
-    color: #243B53 !important;
+/* Top toolbar */
+[data-testid="stHeader"] {
+    background-color: #EEE2DC !important;
 }
 
 /* Sidebar */
 [data-testid="stSidebar"],
 [data-testid="stSidebarContent"] {
-    background-color: #A5BCD6 !important;
-    color: #243B53 !important;
+    background-color: #EDC7B7 !important;
 }
 
-/* Text */
-h1, h2, h3, h4, h5, h6,
-[data-testid="stMarkdownContainer"],
-[data-testid="stWidgetLabel"],
-[data-testid="stMetricLabel"],
-[data-testid="stMetricValue"] {
-    color: #243B53 !important;
-}
-
-[data-testid="stCaptionContainer"] {
-    color: #465D73 !important;
-}
-
-/* Page spacing */
+/* Layout */
 .block-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
     max-width: 1200px;
 }
 
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #123C69 !important;
+}
+
+/* Text and labels */
+[data-testid="stMarkdownContainer"],
+[data-testid="stWidgetLabel"],
+[data-testid="stMetricLabel"],
+[data-testid="stMetricValue"] {
+    color: #123C69 !important;
+}
+
+[data-testid="stCaptionContainer"] {
+    color: #4E5265 !important;
+}
+
 /* Summary cards */
 [data-testid="stMetric"] {
-    background-color: #E1EAF3 !important;
-    border: 1px solid #A5BCD6 !important;
+    background-color: #F8F1ED !important;
+    border: 1px solid #BAB2B5 !important;
+    border-top: 4px solid #AC3B61 !important;
     border-radius: 10px;
     padding: 18px;
 }
 
 /* Question form */
 [data-testid="stForm"] {
-    background-color: #F5EFC6 !important;
-    border: 1px solid #A5BCD6 !important;
+    background-color: #F8F1ED !important;
+    border: 1px solid #BAB2B5 !important;
     border-radius: 10px;
     padding: 22px;
 }
 
-/* Input box */
+/* Input field */
 [data-testid="stTextInput"] [data-baseweb="input"],
 [data-testid="stTextInput"] [data-baseweb="base-input"] {
-    background-color: #FFFBEF !important;
-    border-color: #7D9BB9 !important;
+    background-color: #FFFAF7 !important;
+    border-color: #BAB2B5 !important;
 }
 
 [data-testid="stTextInput"] input {
-    background-color: #FFFBEF !important;
-    color: #243B53 !important;
-    -webkit-text-fill-color: #243B53 !important;
-    caret-color: #243B53;
+    background-color: #FFFAF7 !important;
+    color: #123C69 !important;
+    -webkit-text-fill-color: #123C69 !important;
+    caret-color: #AC3B61;
 }
 
 [data-testid="stTextInput"] input::placeholder {
-    color: #526A80 !important;
-    -webkit-text-fill-color: #526A80 !important;
+    color: #626579 !important;
+    -webkit-text-fill-color: #626579 !important;
     opacity: 1;
 }
 
-/* All app buttons */
+/* Example and download buttons */
 div.stButton > button,
-div.stDownloadButton > button,
-[data-testid="stFormSubmitButton"] > button {
-    background-color: #A5BCD6 !important;
-    color: #243B53 !important;
-    border: 1px solid #7D9BB9 !important;
+div.stDownloadButton > button {
+    background-color: #EDC7B7 !important;
+    color: #123C69 !important;
+    border: 1px solid #C99F90 !important;
     border-radius: 7px;
 }
 
 div.stButton > button:hover,
-div.stDownloadButton > button:hover,
-[data-testid="stFormSubmitButton"] > button:hover {
-    background-color: #BDD0E3 !important;
-    border-color: #526F8B !important;
+div.stDownloadButton > button:hover {
+    background-color: #F5D8CC !important;
+    border-color: #AC3B61 !important;
 }
 
-div.stButton > button p,
-div.stDownloadButton > button p,
-[data-testid="stFormSubmitButton"] > button p {
-    color: #243B53 !important;
+/* Run query button */
+[data-testid="stFormSubmitButton"] > button {
+    background-color: #AC3B61 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #AC3B61 !important;
+    border-radius: 7px;
+}
+
+[data-testid="stFormSubmitButton"] > button:hover {
+    background-color: #922F51 !important;
+    border-color: #922F51 !important;
+}
+
+[data-testid="stFormSubmitButton"] > button p,
+[data-testid="stFormSubmitButton"] [data-testid="stMarkdownContainer"] {
+    color: #FFFFFF !important;
 }
 
 /* Expandable sections */
 [data-testid="stExpander"],
 [data-testid="stExpander"] details,
 [data-testid="stExpander"] summary {
-    background-color: #FFFBEF !important;
-    color: #243B53 !important;
+    background-color: #F8F1ED !important;
+    color: #123C69 !important;
     border-radius: 8px;
 }
 
 [data-testid="stExpander"] {
-    border: 1px solid #A5BCD6 !important;
+    border: 1px solid #BAB2B5 !important;
 }
 
-/* Tabs */
+/* Results tabs */
 button[role="tab"] {
-    background-color: transparent !important;
-    color: #243B53 !important;
+    color: #123C69 !important;
+}
+
+button[role="tab"][aria-selected="true"] {
+    color: #AC3B61 !important;
 }
 
 [data-baseweb="tab-highlight"] {
-    background-color: #7D9BB9 !important;
+    background-color: #AC3B61 !important;
 }
 
 /* SQL display */
 [data-testid="stCode"],
 [data-testid="stCode"] pre,
 [data-testid="stCode"] code {
-    background-color: #E1EAF3 !important;
-    color: #243B53 !important;
+    background-color: #F8F1ED !important;
+    color: #123C69 !important;
 }
 
 /* Dividers */
 hr {
-    border-color: #A5BCD6 !important;
+    border-color: #BAB2B5 !important;
 }
 </style>
 """, unsafe_allow_html=True)
